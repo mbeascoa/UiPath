@@ -1,0 +1,4 @@
+﻿<tr><td>Consulta Marcas Persona</td><td>Se descargó con éxito la BBDD</td><td></td><td>0</td></tr>
+<tr><td>Consulta Marcas Comedor</td><td>Se descargó con éxito la BBDD</td><td></td><td>1</td></tr>
+<tr><td>Consulta CHECKINOUT</td><td>Se descargó con éxito la BBDD</td><td></td><td>2</td></tr>
+<tr><td>Consulta USERINFO</td><td>Se descargó con éxito la BBDD</td><td></td><td>3</td></tr>
