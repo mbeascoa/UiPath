@@ -1,0 +1,442 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="enviar_informacion" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1166,2553" sap2010:WorkflowViewState.IdRef="enviar_informacion_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="80">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="enviar_informacion" sap:VirtualizedContainerService.HintSize="705,2328" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="access_token" />
+      <Variable x:TypeArguments="x:String" Name="refresh_token" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="header" />
+      <Variable x:TypeArguments="x:String" Name="response" />
+      <Variable x:TypeArguments="x:Int32" Name="status" />
+      <Variable x:TypeArguments="njl:JObject" Name="response_jason" />
+      <Variable x:TypeArguments="x:String" Name="token_type" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_archivo_procesado" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="663,2236" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="667,2394" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="url_token" />
+            <Variable x:TypeArguments="x:String" Name="body_token" />
+            <Variable x:TypeArguments="x:String" Name="pass_1" />
+            <Variable x:TypeArguments="x:String" Name="grant_type" />
+            <Variable x:TypeArguments="x:String" Name="user_2" />
+            <Variable x:TypeArguments="x:String" Name="pass_2" />
+            <Variable x:TypeArguments="x:String" Name="user_1" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="625,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Inicio API&quot;]" />
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="625,286" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[url_token]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">https://test-api.osf.pe/oauth/token</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[body_token]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">grant_type=password&amp;username=testsap&amp;password=qwerty</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[user_1]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">my-trusted-client</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[pass_1]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">secret</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[grant_type]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">password</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[user_2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">testsap</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[pass_2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">qwerty</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="C:\Users\Administrator\Documents\UiPath\OSF\Contabilizacion_OSF\Data\Output" sap:VirtualizedContainerService.HintSize="625,1714" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+            <ui:ForEachFileX.Body>
+              <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                <ActivityAction.Argument1>
+                  <DelegateInArgument x:TypeArguments="si:FileInfo" Name="archivo_procesado" />
+                </ActivityAction.Argument1>
+                <ActivityAction.Argument2>
+                  <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                </ActivityAction.Argument2>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="591,1465" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Obtener token" sap:VirtualizedContainerService.HintSize="549,450" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[body_token]" BodyFormat="application/x-www-form-urlencoded" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[url_token]" sap:VirtualizedContainerService.HintSize="431,57" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Password="[pass_1]" ResponseHeaders="[header]" Result="[response]" StatusCode="[status]" TimeoutMS="6000" Username="[user_1]">
+                      <ui:HttpClient.Attachments>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                      </ui:HttpClient.Attachments>
+                      <ui:HttpClient.Cookies>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                      </ui:HttpClient.Cookies>
+                      <ui:HttpClient.Headers>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                      </ui:HttpClient.Headers>
+                      <ui:HttpClient.Parameters>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                      </ui:HttpClient.Parameters>
+                      <ui:HttpClient.UrlSegments>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                      </ui:HttpClient.UrlSegments>
+                    </ui:HttpClient>
+                    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="431,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[response_jason]" JsonString="[response]" />
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[access_token]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[response_jason.SelectToken("access_token").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[refresh_token]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[response_jason.SelectToken("refresh_token").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[token_type]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[response_jason.SelectToken("token_type").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                    </ui:MultipleAssign>
+                  </Sequence>
+                  <ui:ReadRange AddHeaders="True" DataTable="[dt_archivo_procesado]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="549,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Hoja 1" WorkbookPath="[archivo_procesado.FullName]">
+                    <ui:ReadRange.Range>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:ReadRange.Range>
+                  </ui:ReadRange>
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="inserta datos datos en estructura json" DataTable="[dt_archivo_procesado]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="549,756" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="fila_dt_archivo_procesado" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="515,611" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="codigo_json" />
+                            <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="header_json" />
+                            <Variable x:TypeArguments="x:String" Name="response_json" />
+                            <Variable x:TypeArguments="x:Int32" Name="status_json" />
+                            <Variable x:TypeArguments="njl:JObject" Name="response_json_deserialize" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence sap:VirtualizedContainerService.HintSize="473,519" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[codigo_json]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["[{"+
+    Chr(34)+"asignacionPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Asignación posición").ToString+Chr(34)+","+
+	Chr(34)+"centroBeneficioPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Cento de Beneficio posición").ToString+Chr(34)+","+
+	Chr(34)+"centroCostoPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Centro de Costo posición").ToString+Chr(34)+","+
+	Chr(34)+"claseDocumento"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Clase de documento").ToString+Chr(34)+","+
+	Chr(34)+"claveContabilizacionPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Clave de contabilización posición").ToString+Chr(34)+","+
+	Chr(34)+"codigoSiga"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Codigo siga").ToString+Chr(34)+","+
+	Chr(34)+"condicionPagoPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Condición de pago posición").ToString+Chr(34)+","+
+	Chr(34)+"cuentaPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Cuenta posición").ToString+Chr(34)+","+
+	Chr(34)+"ejercicio"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Ejercicio").ToString+Chr(34)+","+
+	Chr(34)+"estado"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Estado").ToString+Chr(34)+","+
+	Chr(34)+"fechaBasePosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Fecha Base posición").ToString+Chr(34)+","+
+	Chr(34)+"fechaContable"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Fecha Contabilización").ToString+Chr(34)+","+
+	Chr(34)+"fechaDocumento"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Fecha de documento").ToString+Chr(34)+","+
+	Chr(34)+"idclienteProveedor"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("numero cliente/proveedor").ToString+Chr(34)+","+
+	Chr(34)+"importePosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Importe posición").ToString+Chr(34)+","+
+	Chr(34)+"indicadorCmePosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Indicador CME posición").ToString+Chr(34)+","+
+	Chr(34)+"mensajeContabilizadoError"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Mensaje: Contabilizado- Error").ToString+Chr(34)+","+
+	Chr(34)+"moneda"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Moneda").ToString+Chr(34)+","+
+	Chr(34)+"numeroDocumentoSap"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Número docto SAP").ToString+Chr(34)+","+
+	Chr(34)+"objetoPA1"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Objeto PA1").ToString+Chr(34)+","+
+	Chr(34)+"objetoPA2"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Objeto PA2").ToString+Chr(34)+","+
+	Chr(34)+"operacionContable"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Operación /Contable").ToString+Chr(34)+","+
+	Chr(34)+"ordenCO"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Orden CO").ToString+Chr(34)+","+
+	Chr(34)+"ordenCompra"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Orden de Compra").ToString+Chr(34)+","+
+	Chr(34)+"referencia"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Referencia").ToString+Chr(34)+","+
+	Chr(34)+"referencia1"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Referencia 1").ToString+Chr(34)+","+
+	Chr(34)+"referencia2"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Referencia 2").ToString+Chr(34)+","+
+	Chr(34)+"referencia3"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Referencia 3").ToString+Chr(34)+","+
+	Chr(34)+"sociedad"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Sociedad").ToString+Chr(34)+","+
+	Chr(34)+"sociedadSap"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Sociedad out").ToString+Chr(34)+","+
+	Chr(34)+"textoCabecera"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Texto Cabecera").ToString+Chr(34)+","+
+	Chr(34)+"textoPosicion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Texto posición").ToString+Chr(34)+","+
+	Chr(34)+"tipoCambio"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Tipo de Cambio").ToString+Chr(34)+","+
+	Chr(34)+"tipoOperacion"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Tipo Operación").ToString+Chr(34)+","+
+	Chr(34)+"totalImporte"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("Total importe").ToString+Chr(34)+","+
+	Chr(34)+"transaccionSap"+Chr(34)+":"+Chr(34)+fila_dt_archivo_procesado("trn SAP").ToString+Chr(34)+
+"}]"]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:MultipleAssign>
+                            <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[codigo_json]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://test-api.osf.pe/sap_contabilidad/actualizar_asiento" sap:VirtualizedContainerService.HintSize="431,57" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Password="[Nothing]" ResponseHeaders="[header_json]" Result="[response_json]" StatusCode="[status_json]" TimeoutMS="6000" Username="[Nothing]">
+                              <ui:HttpClient.Attachments>
+                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                              </ui:HttpClient.Attachments>
+                              <ui:HttpClient.Cookies>
+                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                              </ui:HttpClient.Cookies>
+                              <ui:HttpClient.Headers>
+                                <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer "+access_token]</InArgument>
+                              </ui:HttpClient.Headers>
+                              <ui:HttpClient.Parameters>
+                                <InArgument x:TypeArguments="x:String" x:Key="asignacionPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="centroBeneficioPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="centroCostoPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="claseDocumento" />
+                                <InArgument x:TypeArguments="x:String" x:Key="claveContabilizacionPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="codigoSiga" />
+                                <InArgument x:TypeArguments="x:String" x:Key="condicionPagoPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="cuentaPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="ejercicio" />
+                                <InArgument x:TypeArguments="x:String" x:Key="fechaBasePosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="fechaContable" />
+                                <InArgument x:TypeArguments="x:String" x:Key="fechaDocumento" />
+                                <InArgument x:TypeArguments="x:String" x:Key="importePosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="indicadorCmePosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="mensajeContabilizadoError" />
+                                <InArgument x:TypeArguments="x:String" x:Key="moneda" />
+                                <InArgument x:TypeArguments="x:String" x:Key="motivoAnulacion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="numeroDocumentoSap" />
+                                <InArgument x:TypeArguments="x:String" x:Key="objetoPA1" />
+                                <InArgument x:TypeArguments="x:String" x:Key="objetoPA2" />
+                                <InArgument x:TypeArguments="x:String" x:Key="operacionContable" />
+                                <InArgument x:TypeArguments="x:String" x:Key="ordenCO" />
+                                <InArgument x:TypeArguments="x:String" x:Key="referencia" />
+                                <InArgument x:TypeArguments="x:String" x:Key="referencia1" />
+                                <InArgument x:TypeArguments="x:String" x:Key="referencia2" />
+                                <InArgument x:TypeArguments="x:String" x:Key="referencia3" />
+                                <InArgument x:TypeArguments="x:String" x:Key="sociedad" />
+                                <InArgument x:TypeArguments="x:String" x:Key="textoCabecera" />
+                                <InArgument x:TypeArguments="x:String" x:Key="textoPosicion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="tipoCambio" />
+                                <InArgument x:TypeArguments="x:String" x:Key="tipoOperacion" />
+                                <InArgument x:TypeArguments="x:String" x:Key="transaccionSap" />
+                              </ui:HttpClient.Parameters>
+                              <ui:HttpClient.UrlSegments>
+                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                              </ui:HttpClient.UrlSegments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:HttpClient>
+                            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="431,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[response_json_deserialize]" JsonString="[response_json]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[response_json_deserialize]" />
+                          </Sequence>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEachRow>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachFileX.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachFileX>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="625,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Fin api&quot;]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="629,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
